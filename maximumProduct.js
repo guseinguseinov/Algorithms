@@ -1,5 +1,3 @@
-'use strict';
-
 var maximumProduct = function(nums) {
     nums.sort((a, b) => Math.abs(b) - Math.abs(a));
    
@@ -16,3 +14,5 @@ maximumProduct([1,2,3,4]); // 24
 maximumProduct([-1, -2, -3]);  // -6
 maximumProduct([-100,-98,-1,2,3,4]); //39200
 maximumProduct([-100,-2,-3,1]); // 300
+
+// didnt finished

@@ -1,5 +1,3 @@
-// 'use strict';
-
 const checkAnagram = (s, t) => {
 
     if (t.length !== s.length) {
