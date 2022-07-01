@@ -22,5 +22,6 @@ checkAnagram('anagram', "nagaram");
 
 
 // RESULTS :
-// Runtime: 170 ms, faster than 12.66% of JavaScript online submissions for Valid Anagram.
-// Memory Usage: 47.8 MB, less than 25.80% of JavaScript online submissions for Valid Anagram.
+// 36 / 36 test cases passed.
+// Runtime: 170 ms
+// Memory Usage: 47.8 MB
