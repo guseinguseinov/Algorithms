@@ -1,5 +1,4 @@
 const checkAnagram = (s, t) => {
-
     if (t.length !== s.length) {
         return false;
     }
@@ -7,13 +6,10 @@ const checkAnagram = (s, t) => {
     s = [...s].sort().join('');
     t = [...t].sort().join('');
 
-    for (let i = 0; i < s.length; i++) {
-        if (s[i] !== t[i]) {
-            return false;
-        }
-    }
-
-    return true;
+    
+    if (s === t) return true;
+    
+    return false;
 }
 
 checkAnagram('anagram', "nagaram");
@@ -21,5 +17,5 @@ checkAnagram('anagram', "nagaram");
 
 // RESULTS :
 // 36 / 36 test cases passed.
-// Runtime: 170 ms
-// Memory Usage: 47.8 MB
+// Runtime: 131 ms
+// Memory Usage: 48.1 MB

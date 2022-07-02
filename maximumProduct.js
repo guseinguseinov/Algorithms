@@ -1,18 +1,10 @@
 var maximumProduct = function(nums) {
-    nums.sort((a, b) => Math.abs(b) - Math.abs(a));
-   
-    let prod = 1;
-    for (let i = 0; i < 3; i++) {
-        prod*= nums[i];
-    }
-    console.log(nums);
-    console.log(prod);
-    // return prod;
+    nums.sort((a, b) => a - b);
+    let length = nums.length;
+    return Math.max(nums[length -1]*nums[length -2]*nums[ length -3], nums[0]*nums[length - 1]*nums[1]);
 };
 
-maximumProduct([1,2,3,4]); // 24
-maximumProduct([-1, -2, -3]);  // -6
-maximumProduct([-100,-98,-1,2,3,4]); //39200
-maximumProduct([-100,-2,-3,1]); // 300
-
-// didnt finished
+// RESULTS :
+// 92 / 92 test cases passed.
+// Runtime: 182 ms
+// Memory Usage: 46.8 MB
