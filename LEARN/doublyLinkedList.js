@@ -114,27 +114,52 @@ class DoublyLinkedList {
     }
 
     insert(index, value) {
-        if (index < 0 || index > this.length) return null;
+        if (index < 0 || index > this.length) return false;
 
         if (index == 0) return !!this.unshift(value);
 
-        if (index == this.index) return !!this.push(value);
+        if (index == this.length) return !!this.push(value);
 
         let prev = this.get(index - 1);
         let node = new Node(value);
         node.next = prev.next;
+        prev.next.prev = node;
 
         node.prev = prev;
+        prev.next = node;
+        this.length++;
 
-        return node;
+        return true;
+    }
+
+    remove(index) {
+        if (index < 0 || index >= this.length) return null;
+
+        if (index == 0) return this.shift();
+
+        if (index == this.length - 1) return this.pop();
+
+        let prev = this.get(index - 1);
+        let deletedNode = prev.next;
+        deletedNode.next.prev = prev;
+        prev.next = deletedNode.next;
+
+        deletedNode.prev = null;
+        deletedNode.next = null;
+
+        this.length--;
+        return deletedNode;
+
     }
 }
 
 let list = new DoublyLinkedList();
 
-list.insert(0, 1);
-list.insert(1, 3);
-list.insert(2, 4);
-list.insert(1, 2);
+list.push(1);
+list.push(2);
+list.push(3);
+list.push(4);
+
+list.remove(2);
 
 console.log(list);
