@@ -67,6 +67,44 @@ class BinarySearchTree {
         }
         return data;
     }
+
+
+    // Here begins DFS methods
+    preOrder() {
+        let visited = [];
+
+        function helper(node) {
+            visited.push(node.val);
+            if (node.left) helper(node.left);
+            if (node.right) helper(node.right);
+        }
+        helper(this.root);
+        return visited;
+    }
+
+    postOrder() {
+        let visited = [];
+
+        function helper(node) {
+            if (node.left) helper(node.left);
+            if (node.right) helper(node.right);
+            visited.push(node.val);
+        }
+        helper(this.root);
+        return visited;
+    }
+
+    inOrder() {
+        let visited = [];
+
+        function helper(node) {
+            if (node.left) helper(node.left);
+            visited.push(node.val);
+            if (node.right) helper(node.right);
+        }
+        helper(this.root);
+        return visited;
+    }
 }
 
 const tree = new BinarySearchTree();
@@ -78,4 +116,7 @@ tree.insert(3);
 tree.insert(8);
 tree.insert(20);
 console.log(tree.BFS());
+console.log(tree.preOrder());
+console.log(tree.postOrder());
+console.log(tree.inOrder());
 console.log(tree);
