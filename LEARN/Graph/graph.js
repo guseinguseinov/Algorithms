@@ -35,15 +35,92 @@ class Graph {
         for (let i of this.adjacencyList[vertex]) this.removeEdge(vertex, i);
         delete this.adjacencyList[vertex];
     }
+
+
+    DFSRecursive(vertex) {
+        if (!this.adjacencyList[vertex]) return undefined;
+
+        let result = [];
+        let visited = {};
+        let adjacencyList = this.adjacencyList;
+
+        (function helper(vrtx) {
+            if (!vrtx) return null;
+            visited[vrtx] = true;
+            result.push(vrtx);
+            adjacencyList[vrtx].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    return helper(neighbor);
+                }
+            });
+        })(vertex);
+
+        return result;
+    }
+
+    DFSIterative(start) {
+        let stack = [];
+        let result = [];
+        let visited = {};
+
+        stack.push(start);
+        visited[start] = true;
+
+        while (stack.length) {
+            let vertex = stack.pop();
+            result.push(vertex);
+
+            this.adjacencyList[vertex].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    stack.push(neighbor);
+                }
+            });
+
+        }
+        return result;
+    }
+
+    bfs(start) {
+        let queue = [start];
+        let result = [];
+        let visited = {};
+
+        visited[start] = true;
+
+        while (queue.length) {
+            let vertex = queue.shift();
+            result.push(vertex);
+
+            this.adjacencyList[vertex].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
+            });
+        }
+
+        return result;
+    }
+
 }
 
-let graph = new Graph();
-graph.addVertex('Tokyo');
-graph.addVertex('San Francisco');
-graph.addEdge('Tokyo', "San Francisco");
-graph.addEdge('Tokyo', "Baku");
-graph.addEdge("Baku", "San Francisco");
-graph.removeVertex("Baku");
+let g = new Graph();
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addVertex("E");
+g.addVertex("F");
 
+g.addEdge("A", "B");
+g.addEdge("A", "C");
+g.addEdge("B", "D");
+g.addEdge("C", "E");
+g.addEdge("D", "E");
+g.addEdge("D", "F");
+g.addEdge("E", "F");
 
-console.log(graph);
+console.log(g.bfs("A"));
+
+console.log(g.adjacencyList);
