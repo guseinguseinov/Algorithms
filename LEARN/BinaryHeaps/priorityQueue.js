@@ -78,10 +78,12 @@ class PriorityQueue {
 }
 
 const priorityQueue = new PriorityQueue();
-priorityQueue.enqueue("common cold", 5);
-priorityQueue.enqueue("Gunshut guy", 1);
-priorityQueue.enqueue("high fiver", 4);
-priorityQueue.enqueue("broken arm", 2);
-priorityQueue.enqueue("glass in foot", 3);
-priorityQueue.dequeue();
-console.log(priorityQueue);
+// priorityQueue.enqueue("common cold", 5);
+// priorityQueue.enqueue("Gunshut guy", 1);
+// priorityQueue.enqueue("high fiver", 4);
+// priorityQueue.enqueue("broken arm", 2);
+// priorityQueue.enqueue("glass in foot", 3);
+// priorityQueue.dequeue();
+// console.log(priorityQueue);
+
+module.exports = PriorityQueue;
